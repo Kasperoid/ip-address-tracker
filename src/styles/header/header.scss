@@ -1,0 +1,15 @@
+.ip-header {
+    height: 220px;
+    background-image: url('../../images/pattern-bg-desktop.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px 25px;
+    @media screen and (max-width: 768px) {
+        padding: 10px 15px;
+    }
+    .ant-typography {
+        font-weight: 500;
+        font-size: 30px;
+        color: white;
+    }
+}
