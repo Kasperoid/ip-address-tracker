@@ -39,22 +39,22 @@ const InfoCard = ({
       value: isp,
     },
   ];
-  
+
   return (
     <Flex
       justify="center"
-      style={{ position: 'absolute', top: -60, left: 0, right: 0 }}
+      style={{ position: 'absolute', top: -60, left: 0, right: 0, zIndex: 3 }}
     >
       <Card
         style={{
           flex: 1,
-          maxWidth: '750px',
+          maxWidth: '950px',
           borderRadius: '14px',
         }}
       >
         <Flex justify="space-between">
           {options.map((option, index) => (
-            <>
+            <div key={index}>
               <Space direction="vertical" size={0}>
                 <Paragraph
                   style={{
@@ -70,7 +70,7 @@ const InfoCard = ({
                 <Paragraph
                   style={{
                     color: 'hsl(0, 0%, 17%)',
-                    fontSize: '18px',
+                    fontSize: '22px',
                     fontWeight: 500,
                   }}
                 >
@@ -80,7 +80,7 @@ const InfoCard = ({
               {index + 1 < options.length && (
                 <Divider type="vertical" style={{ height: 'auto' }} />
               )}
-            </>
+            </div>
           ))}
         </Flex>
       </Card>
