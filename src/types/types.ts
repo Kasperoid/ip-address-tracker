@@ -20,3 +20,8 @@ export type ipLocationType = {
   geonameId: number;
   postalCode: string;
 };
+
+export type optionsCardType = {
+  name: string;
+  value: string;
+};
