@@ -17,7 +17,6 @@ const HeaderTracker = ({ searchIp }: HeaderTrackerProps) => {
         <Search
           enterButton={<RightOutlined />}
           placeholder="Search for any IP address"
-          style={{ maxWidth: '500px' }}
           size="large"
           onSearch={(inputText) => searchIp(inputText)}
         />

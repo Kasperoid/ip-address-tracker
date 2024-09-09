@@ -5,13 +5,16 @@
   background-repeat: no-repeat;
   padding: 10px 25px;
 }
-@media screen and (max-width: 768px) {
-  .ip-header {
-    padding: 10px 15px;
-  }
+.ip-header .ant-input-group-wrapper {
+  max-width: 500px;
 }
 .ip-header .ant-typography {
   font-weight: 500;
-  font-size: 30px;
+  font-size: calc(20px + 12 * (100vw - 320px) / 1600);
   color: white;
+}
+@media screen and (max-width: 425px) {
+  .ip-header {
+    padding: 10px 15px;
+  }
 }/*# sourceMappingURL=header.css.map */
