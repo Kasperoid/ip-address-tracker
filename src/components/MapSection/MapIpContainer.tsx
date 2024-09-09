@@ -16,14 +16,7 @@ const MapIpContainer = ({ position, isp }: MapIpContainerProps) => {
       attributionControl={false}
       center={position}
       zoom={13}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 2,
-      }}
+      className="map-container"
     >
       <TileLayer url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=EZlDxyYciq0mRxjL8jfZ" />
       <MoveMapCenter position={position} />
