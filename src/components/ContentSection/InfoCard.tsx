@@ -36,40 +36,17 @@ const InfoCard = (props: InfoCardProps) => {
   ];
 
   return (
-    <Flex
-      justify="center"
-      style={{ position: 'absolute', top: -60, left: 0, right: 0, zIndex: 3 }}
-    >
+    <Flex className="infoCard-container" justify="center">
       <Spin spinning={loading}>
-        <Card
-          style={{
-            flex: 1,
-            maxWidth: '950px',
-            borderRadius: '14px',
-          }}
-        >
-          <Flex justify="space-between">
+        <Card className="infoCard-container-inner">
+          <Flex justify="space-between" className="flex-container">
             {options.map((option, index) => (
               <div key={index}>
                 <Space direction="vertical" size={0}>
-                  <Paragraph
-                    style={{
-                      fontSize: '10px',
-                      fontWeight: '700',
-                      letterSpacing: '1px',
-                      color: 'hsl(0, 0%, 59%)',
-                      marginBottom: 0,
-                    }}
-                  >
+                  <Paragraph className="infoCard-option-title">
                     {option.name}
                   </Paragraph>
-                  <Paragraph
-                    style={{
-                      color: 'hsl(0, 0%, 17%)',
-                      fontSize: '22px',
-                      fontWeight: 500,
-                    }}
-                  >
+                  <Paragraph className="infoCard-option-value">
                     {option.value}
                   </Paragraph>
                 </Space>

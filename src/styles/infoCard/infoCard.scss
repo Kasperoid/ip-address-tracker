@@ -1,0 +1,38 @@
+.infoCard-container {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+
+  @media screen and (max-width: 768px) {
+    top: -100px;
+  }
+
+  .infoCard-container-inner {
+    flex: 1;
+    max-width: 950px;
+    border-radius: 14px;
+
+    .flex-container {
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  }
+
+  .infoCard-option-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: hsl(0, 0%, 59%);
+    margin-bottom: 0;
+  }
+
+  .infoCard-option-value {
+    color: hsl(0, 0%, 17%);
+    font-size: calc(15px + 7 * (100vw - 320px) / 880);
+    font-weight: 500;
+  }
+}
