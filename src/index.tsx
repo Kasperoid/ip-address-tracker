@@ -4,6 +4,7 @@ import App from './App';
 import 'normalize.css';
 import './styles/header/header.css';
 import './styles/main/main.css';
+import './styles/infoCard/infoCard.css';
 import { ConfigProvider } from 'antd';
 
 const root = ReactDOM.createRoot(
