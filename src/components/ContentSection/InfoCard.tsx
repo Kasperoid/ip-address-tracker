@@ -1,10 +1,13 @@
-import React from 'react';
-import { Flex, Card, Typography, Space, Divider, Spin } from 'antd';
+import { Space, Divider, Spin } from 'antd';
 import {
   ipAddressType,
   ipLocationType,
   optionsCardType,
 } from '../../types/types';
+import { InfoCardContainer } from '../../styles/infoCard/InfoCardContainer';
+import { InfoCardInnerContainer } from '../../styles/infoCard/InfoCardInnerContainer';
+import { CardColumnTitle } from '../../styles/infoCard/CardColumnTitle';
+import { CardColumnText } from '../../styles/infoCard/CardColumnText';
 
 interface InfoCardProps
   extends Omit<ipAddressType, 'domain' | 'location'>,
@@ -14,7 +17,6 @@ interface InfoCardProps
 
 const InfoCard = (props: InfoCardProps) => {
   const { ip, region, city, timezone, isp, postalCode, loading } = props;
-  const { Paragraph } = Typography;
 
   const options: optionsCardType[] = [
     {
@@ -36,29 +38,23 @@ const InfoCard = (props: InfoCardProps) => {
   ];
 
   return (
-    <Flex className="infoCard-container" justify="center">
+    <InfoCardContainer justify="center">
       <Spin spinning={loading}>
-        <Card className="infoCard-container-inner">
-          <Flex justify="space-between" className="flex-container">
-            {options.map((option, index) => (
-              <div key={index}>
-                <Space direction="vertical" size={0}>
-                  <Paragraph className="infoCard-option-title">
-                    {option.name}
-                  </Paragraph>
-                  <Paragraph className="infoCard-option-value">
-                    {option.value}
-                  </Paragraph>
-                </Space>
-                {index + 1 < options.length && (
-                  <Divider type="vertical" style={{ height: 'auto' }} />
-                )}
-              </div>
-            ))}
-          </Flex>
-        </Card>
+        <InfoCardInnerContainer>
+          {options.map((option, index) => (
+            <div key={index}>
+              <Space direction="vertical" size={0}>
+                <CardColumnTitle>{option.name}</CardColumnTitle>
+                <CardColumnText>{option.value}</CardColumnText>
+              </Space>
+              {index + 1 < options.length && (
+                <Divider type="vertical" style={{ height: 'auto' }} />
+              )}
+            </div>
+          ))}
+        </InfoCardInnerContainer>
       </Spin>
-    </Flex>
+    </InfoCardContainer>
   );
 };
 
