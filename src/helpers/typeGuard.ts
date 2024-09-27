@@ -1,5 +1,5 @@
-import { ipAddressType } from "../types/types";
+import { errorApiType } from "../types/types";
 
-export const isIpData = (data: any): data is ipAddressType => {
-    return typeof data === "object" && data !== null && "location" in data
+export const isErrorApi = (data: any): data is errorApiType => {
+    return typeof data === "object" && data !== null && "message" in data
 }
