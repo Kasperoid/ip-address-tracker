@@ -1,12 +1,12 @@
 import { Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { LatLngTuple } from 'leaflet';
-import { ipAddressType } from '../../types/types';
+import { ipConnectionType } from '../../types/types';
 import { iconPerson } from '../Icons/MarkerLocationIcon';
 import MoveMapCenter from './MoveMapCenter';
 import { MapContainerStyled } from '../../styles/map/MapContainerStyled';
 
-interface MapIpContainerProps extends Partial<Pick<ipAddressType, 'isp'>> {
+interface MapIpContainerProps extends ipConnectionType {
   position?: LatLngTuple;
 }
 
