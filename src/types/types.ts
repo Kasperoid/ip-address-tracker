@@ -1,25 +1,31 @@
 export type ipAddressType = {
   ip: string;
-  location: ipLocationType;
-  domains?: string[];
-  isp: string;
+  success: boolean;
+  country_code?: string;
+  region?: string;
+  city?: string;
+  latitude?: number,
+  longitude?: number,
+  connection?: ipConnectionType,
+  timezone?: {
+    utc: string;
+  }
 };
 
-export type ipLocationType = {
-  country: string;
-  region: string;
-  city: string;
-  lat: number;
-  lng: number;
-  timezone: string;
-  geonameId: number;
-  postalCode: string;
-};
+export type ipConnectionType = {
+  isp?: string;
+}
 
 export type optionsCardType = {
   name: string;
   value: string;
-};
+}
+
+export type errorApiType = {
+  ip: string;
+  message: string;
+  success: boolean;
+}
 
 export class CustomError extends Error {
   public code: number;
