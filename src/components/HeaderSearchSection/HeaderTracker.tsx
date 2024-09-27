@@ -4,28 +4,22 @@ import { HeaderContainerStyled } from '../../styles/header/HeaderContainerStyled
 import bg from './../../images/pattern-bg-desktop.png';
 import { TitleHeader } from '../../styles/header/TitleHeader';
 import { HeaderSearchStyled } from '../../styles/header/HeaderSearchStyled';
-import { URL_SEARCH_IP } from '../../constants/constants';
-import { fetcher } from '../../helpers/fetcher';
-import { useSWRConfig } from 'swr';
+import { TriggerWithArgs } from 'swr/dist/mutation';
+import { ipAddressType } from '../../types/types';
 
-type HeaderTrackerProps = {
-  loading: boolean;
-};
+interface HeaderTrackerProps {
+  trigger: TriggerWithArgs<ipAddressType | undefined, any, string, string>;
+}
 
-const HeaderTracker = ({ loading }: HeaderTrackerProps) => {
+const HeaderTracker = ({ trigger }: HeaderTrackerProps) => {
   const onSearchHandler = (inputText: string) => {
-    mutate(URL_SEARCH_IP, () => fetcher(URL_SEARCH_IP, inputText), {
-      revalidate: false,
-      throwOnError: false,
-    });
+    trigger(inputText);
   };
-  const { mutate } = useSWRConfig();
   return (
     <HeaderContainerStyled bg={bg}>
       <Flex vertical align="center">
         <TitleHeader>IP Address Tracker</TitleHeader>
         <HeaderSearchStyled
-          loading={loading}
           enterButton={<RightOutlined />}
           placeholder="Search for any IP address"
           size="large"
