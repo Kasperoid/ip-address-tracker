@@ -1,5 +1,6 @@
-export const createError = (messages: string, code: number) => {
-  const error = new Error(messages);
-  error.name = code.toString();
+import { CustomError } from "../types/types";
+
+export const createError = (message: string, code: number, name: string) => {
+  const error = new CustomError(message, code, name);
   return error;
 };
