@@ -1,4 +1,4 @@
-import { ipAddressType, ipErrorType } from '../types/types';
+import { CustomError, ipAddressType } from '../types/types';
 
 export const localIpObj: ipAddressType = {
   ip: '8.8.8.8',
@@ -27,7 +27,8 @@ export const URL_SEARCH_IP: string =
 
 export const API_KEY: string = 'at_k3xMYfAXP0Nqbo84wvtX80BKrXuTv';
 
-export const UNKNOWN_ERROR: ipErrorType = {
-  messages: 'Service Unavailable',
+export const UNKNOWN_ERROR: CustomError = {
+  name: 'Unknown error',
+  message: 'Service doesn\'t work',
   code: 503,
 };
