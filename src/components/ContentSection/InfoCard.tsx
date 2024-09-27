@@ -1,24 +1,20 @@
 import { Space, Divider, Spin } from 'antd';
-import {
-  ipAddressType,
-  ipLocationType,
-  optionsCardType,
-} from '../../types/types';
+import { ipAddressType, optionsCardType } from '../../types/types';
 import { InfoCardContainer } from '../../styles/infoCard/InfoCardContainer';
 import { InfoCardInnerContainer } from '../../styles/infoCard/InfoCardInnerContainer';
 import { CardColumnTitle } from '../../styles/infoCard/CardColumnTitle';
 import { CardColumnText } from '../../styles/infoCard/CardColumnText';
 
 interface InfoCardProps
-  extends Partial<Omit<ipAddressType, 'domain' | 'location'>>,
-    Partial<
-      Pick<ipLocationType, 'city' | 'region' | 'timezone' | 'postalCode'>
-    > {
+  extends Partial<
+    Omit<ipAddressType, 'success' | 'latitude' | 'longitude' | 'message'>
+  > {
   loading: boolean;
 }
 
 const InfoCard = (props: InfoCardProps) => {
-  const { ip, region, city, timezone, isp, postalCode, loading } = props;
+  const { ip, region, city, timezone, connection, country_code, loading } =
+    props;
 
   const options: optionsCardType[] = [
     {
@@ -27,15 +23,15 @@ const InfoCard = (props: InfoCardProps) => {
     },
     {
       name: 'LOCATION',
-      value: region ? `${region} ${city} ${postalCode}` : `None`,
+      value: region ? `${region} ${city} ${country_code}` : `None`,
     },
     {
       name: 'TIMEZONE',
-      value: timezone ? `UTC ${timezone}` : 'None',
+      value: timezone?.utc ? `UTC ${timezone.utc}` : 'None',
     },
     {
       name: 'ISP',
-      value: isp ? isp : 'None',
+      value: connection?.isp ? connection.isp : 'None',
     },
   ];
 
