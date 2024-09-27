@@ -10,8 +10,10 @@ import { CardColumnTitle } from '../../styles/infoCard/CardColumnTitle';
 import { CardColumnText } from '../../styles/infoCard/CardColumnText';
 
 interface InfoCardProps
-  extends Omit<ipAddressType, 'domain' | 'location'>,
-    Pick<ipLocationType, 'city' | 'region' | 'timezone' | 'postalCode'> {
+  extends Partial<Omit<ipAddressType, 'domain' | 'location'>>,
+    Partial<
+      Pick<ipLocationType, 'city' | 'region' | 'timezone' | 'postalCode'>
+    > {
   loading: boolean;
 }
 
@@ -21,7 +23,7 @@ const InfoCard = (props: InfoCardProps) => {
   const options: optionsCardType[] = [
     {
       name: 'IP ADDRESS',
-      value: ip,
+      value: ip ? ip : 'None',
     },
     {
       name: 'LOCATION',

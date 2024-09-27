@@ -6,18 +6,26 @@ import { iconPerson } from '../Icons/MarkerLocationIcon';
 import MoveMapCenter from './MoveMapCenter';
 import { MapContainerStyled } from '../../styles/map/MapContainerStyled';
 
-interface MapIpContainerProps extends Pick<ipAddressType, 'isp'> {
-  position: LatLngTuple;
+interface MapIpContainerProps extends Partial<Pick<ipAddressType, 'isp'>> {
+  position?: LatLngTuple;
 }
 
 const MapIpContainer = ({ position, isp }: MapIpContainerProps) => {
   return (
-    <MapContainerStyled attributionControl={false} center={position} zoom={13}>
+    <MapContainerStyled
+      attributionControl={false}
+      center={position ? position : [37.40599, -122.078514]}
+      zoom={13}
+    >
       <TileLayer url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=EZlDxyYciq0mRxjL8jfZ" />
-      <MoveMapCenter position={position} />
-      <Marker position={position} icon={iconPerson}>
-        <Popup>{isp ? isp : 'None'}</Popup>
-      </Marker>
+      {position && (
+        <>
+          <MoveMapCenter position={position} />
+          <Marker position={position} icon={iconPerson}>
+            <Popup>{isp ? isp : 'None'}</Popup>
+          </Marker>
+        </>
+      )}
     </MapContainerStyled>
   );
 };
