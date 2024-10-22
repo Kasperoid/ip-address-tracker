@@ -22,7 +22,7 @@ function App() {
 
   const { data, isMutating, trigger } = useSWRMutation(URL_SEARCH_IP, fetcher, {
     throwOnError: false,
-    onError: error => {
+    onError: (error) => {
       errorAlert((error as errorApiType).message);
     },
   });
